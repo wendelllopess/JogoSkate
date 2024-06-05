@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.jogo {
+    width: 100%;
+    height: 500px;
+    border-bottom: 30px solid rgb(35, 33, 31);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#021b43ee, #213747ee);
+}
+
+.nuvens{
+    width: 250px;
+    position: absolute;
+    animation: nunvesAnimada 30s infinite linear;
+}
+
+@keyframes nunvesAnimada{
+    from {
+        right: 0px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+.bloco {
+    position: absolute;
+    bottom: 0;
+    width: 70px;
+    animation: blocoAnimado 1.2s infinite linear;
+}
+
+@keyframes blocoAnimado {
+    from {
+        right: -90px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+.skatista {
+    width: 180px;
+    position: absolute;
+    bottom: 0;
+    
+}
+
+.pulo{
+    animation: pulo 500ms ease-out;
+}
+
+@keyframes pulo {
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 160px;
+    }
+
+    50% {
+        bottom: 160px;
+    }
+
+    60% {
+        bottom: 160px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
