@@ -95,7 +95,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: none; /* Inicialmente oculto */
-    color: white;
+    color: rgb(38, 38, 39);
     font-size: 24px;
     font-weight: bold;
 }
