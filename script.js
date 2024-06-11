@@ -1,11 +1,11 @@
 const skatista = document.querySelector('.skatista');
-const bloco = document.querySelector('.bloco');
+const cone = document.querySelector('.cone');
 
 const contadorElement = document.getElementById('contador');
 const jogo = document.querySelector('.jogo');
 
 let contador = 0;
-let passouBloco = false;
+let passouCone = false;
 let trocaDeCores = false;
 
 skatista.style.bottom = '-20px';
@@ -26,19 +26,19 @@ const pulo = () => {
 const loop = setInterval( ()=>{
 
     //selecionar as posicoes dos blocos e do skatista
-    const posicaoBloco = bloco.offsetLeft
+    const posicaoCone = cone.offsetLeft
     // aqui alem de selecionar ele aceessar os estilos ja criado do skatista atraves do "getComputedStyle", e tambem vai tranforma os numeros,
     // que por padrao vem em string por causa da propriedade, e tranforma em numeros permitindo cauculos.
     const posicacoSkatista = +window.getComputedStyle(skatista).bottom.replace('px', '');
 
    console.log(posicacoSkatista)
 
-    //verifica se o bloco esta chegando perto do skatista e para o bloco na posicao da colisao 
-   // e tambem verifica se o skatista pulou e se foi maior que o tamano do bloco
+    //verifica se o cone esta chegando perto do skatista e para o cone na posicao da colisao 
+   // e tambem verifica se o skatista pulou e se foi maior que o tamano do cone
 
-    if(posicaoBloco <= 120 && posicaoBloco > 0 && posicacoSkatista <100){
-        bloco.style.animation = 'none';
-        bloco.style.left = `${posicaoBloco}px`;
+    if(posicaoCone <= 120 && posicaoCone > 0 && posicacoSkatista <100){
+        cone.style.animation = 'none';
+        cone.style.left = `${posicaoCone}px`;
 
         skatista.style.animation = 'none';
         skatista.style.bottom = `${posicacoSkatista}px`;
@@ -48,15 +48,19 @@ const loop = setInterval( ()=>{
         skatista.style.width = '80px';
         skatista.style.marginLeft = '40px';
 
+        //Exibe uma mensagem indicando para apertar uma tecla quando houver a colisao 
+        const mensagemPerda = document.getElementById('mensagem-perda');
+        mensagemPerda.style.display = 'block';
+
         //ira para a funcao do loop quando perder, e nao deixar que o jogo rodando mesmo quadandon der game over
         clearInterval(loop);
-    } else if (posicaoBloco < 0 && !passouBloco) {
+    } else if (posicaoCone < 0 && !passouCone) {
         contador++;
         contadorElement.textContent = contador;
-        passouBloco = true;
+        passouCone = true;
         trocarCorFundo(); // Chamar a função para trocar a cor do fundo
-    } else if (posicaoBloco > 160) {
-        passouBloco = false;
+    } else if (posicaoCone > 160) {
+        passouCone = false;
     }
 
 },16)
@@ -81,3 +85,21 @@ const trocarCorFundo = () => {
         }, 1000); // Muda a cor a cada segundo
     }
 }
+
+
+
+function recarregar(){
+   
+    location.reload();
+    
+}
+
+
+document.addEventListener("keydown", function(event){
+    if (event.key === "r") {
+        recarregar();
+    }else if(event.key === "R"){
+        recarregar();
+    }
+});
+

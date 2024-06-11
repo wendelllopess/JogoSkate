@@ -30,14 +30,14 @@
     }
 }
 
-.bloco {
+.cone {
     position: absolute;
     bottom: 0;
     width: 70px;
-    animation: blocoAnimado 1.2s infinite linear;
+    animation: coneAnimado 1.6s infinite linear;
 }
 
-@keyframes blocoAnimado {
+@keyframes coneAnimado {
     from {
         right: -90px;
     }
@@ -87,4 +87,15 @@
     font-size: 40px;
     font-weight: bold;
     color: white;
+}
+
+#mensagem-perda {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Inicialmente oculto */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
 }
