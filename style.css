@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: rgb(3, 56, 71);
+}
 
 .jogo {
     width: 100%;
