@@ -7,6 +7,9 @@ const jogo = document.querySelector('.jogo');
 let contador = 0;
 let passouCone = false;
 let trocaDeCores = false;
+// let velocidadeCone = 1.6;
+// let proximoPontoDeVerificacao = 5;
+
 
 skatista.style.bottom = '-20px';
 
@@ -21,6 +24,14 @@ const pulo = () => {
         skatista.classList.remove('pulo')
     },500)
 }
+
+// // Função para ajustar a velocidade do cone no CSS
+// const ajustarVelocidadeCone = () => {
+//     if (velocidadeCone > 1.0) {
+//         velocidadeCone -= 0.1 ; // Diminui o tempo de animação para aumentar a velocidade
+//         cone.style.animationDuration = `${velocidadeCone}s`;
+//     } 
+// }
 
 // funcao que ira fazer um loop rodando o jogo e verificar se perdeu ou nao 
 const loop = setInterval( ()=>{
@@ -59,6 +70,11 @@ const loop = setInterval( ()=>{
         contadorElement.textContent = contador;
         passouCone = true;
         trocarCorFundo(); // Chamar a função para trocar a cor do fundo
+
+        // if (contador === proximoPontoDeVerificacao) {
+        //     ajustarVelocidadeCone(); // Ajusta a velocidade
+        //     proximoPontoDeVerificacao += 5; // Atualiza o próximo ponto de verificação
+        // }
     } else if (posicaoCone > 160) {
         passouCone = false;
     }
@@ -76,15 +92,23 @@ const corAleatoria = () => {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-// Função para alternar a cor do background
+// funcao que ira fazer com que o jogo mude cor 
 const trocarCorFundo = () => {
-    if (contador >= 10 && !trocaDeCores) {
+    if (contador >= 15 && contador < 20 && trocaDeCores) {
+        jogo.style.backgroundColor = "black"; // Define a cor de fundo como vermelho
+        clearInterval(intervalId); // Para de mudar a cor aleatória
+    } else if (contador >= 10 && contador < 15 && !trocaDeCores) {
         trocaDeCores = true;
-        setInterval(() => {
+        intervalId = setInterval(() => {
             jogo.style.backgroundColor = corAleatoria();
         }, 1000); // Muda a cor a cada segundo
+    } else if (contador >= 20) {
+        intervalId = setInterval(() => {
+            jogo.style.backgroundColor = corAleatoria();
+        }, 1000); // Volta a mudar a cor a cada segundo
     }
 }
+
 
 
 

@@ -82,11 +82,11 @@
 
 #contador {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 40px;
+    top: 20px;
+    left: 50%;
+    font-size: 60px;
     font-weight: bold;
-    color: white;
+    color: rgb(8, 8, 8);
 }
 
 #mensagem-perda {
@@ -95,7 +95,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: none; /* Inicialmente oculto */
-    color: rgb(38, 38, 39);
-    font-size: 24px;
+    color: #040404;
+    font-size: 34px;
     font-weight: bold;
 }
